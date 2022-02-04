@@ -16,10 +16,8 @@ import App from './App';
   */
 
 ReactDOM.render(
-  //<App saludo="Oli" />,
-  <App saludo="Oli">
-    <h1>Esto es un titulo</h1>
-  </App>,
+  <App />,
+
   document.getElementById('root')
 );
 
