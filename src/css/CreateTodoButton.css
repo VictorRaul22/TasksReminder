@@ -1,0 +1,24 @@
+.btn {
+  position: fixed;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  outline: none;
+  border: none;
+  right: 22px;
+  bottom: 22px;
+  background-color: #435f8c;
+  font-weight: 700;
+  font-size: 2.7rem;
+  display: block;
+  color: white;
+  transition: transform 0.5s;
+}
+.btn:hover {
+  transform: rotate(222deg);
+}
+@media screen and (min-width: 800px) {
+  .btn {
+    display: none;
+  }
+}

@@ -1,0 +1,9 @@
+.title {
+  grid-area: title;
+  font-size: 3rem;
+  color: #435f8c;
+  display: flex;
+  width: 320px;
+  justify-content: space-between;
+  font-weight: 700;
+}

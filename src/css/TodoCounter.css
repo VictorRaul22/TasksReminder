@@ -1,0 +1,8 @@
+.TodoCounter {
+  grid-area: counter;
+  font-size: 1.4rem;
+  text-align: center;
+  color: #424954;
+  display: block;
+  width: 90%;
+}

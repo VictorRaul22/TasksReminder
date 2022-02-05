@@ -4,7 +4,8 @@ import { TodoSearch } from './TodoSearch'
 import { TodoList } from './TodoList'
 import { TodoItem } from './TodoItem'
 import { CreateTodoButton } from './CreateTodoButton';
-
+import { Title } from './Title';
+import { CreateTodoSection } from './CreateTodoSection';
 /*
   ClassName= class
   {algo } sirver para tener valores varibales de una propiedad y no algo constante
@@ -18,7 +19,7 @@ import { CreateTodoButton } from './CreateTodoButton';
 const todos = [
   {
     text: 'Cortar cebolla',
-    completed: false,
+    completed: true,
   },
   {
     text: 'Tomar el curso de intro de React',
@@ -27,7 +28,43 @@ const todos = [
   {
     text: 'Llorar en la lloreria',
     completed: false,
-  }
+  },
+  // {
+  //   text: 'Tomar el curso de intro de React',
+  //   completed: false,
+  // },
+  // {
+  //   text: 'Llorar en la lloreria',
+  //   completed: false,
+  // },
+  // {
+  //   text: 'Tomar el curso de intro de React',
+  //   completed: false,
+  // },
+  // {
+  //   text: 'Llorar en la lloreria',
+  //   completed: false,
+  // },
+  // {
+  //   text: 'Tomar el curso de intro de React',
+  //   completed: false,
+  // },
+  // {
+  //   text: 'Llorar en la lloreria',
+  //   completed: false,
+  // },
+  // {
+  //   text: 'Llorar en la lloreria',
+  //   completed: false,
+  // },
+  // {
+  //   text: 'Tomar el curso de intro de React',
+  //   completed: false,
+  // },
+  // {
+  //   text: 'Llorar en la lloreria',
+  //   completed: false,
+  // }
 
 ]
 /*
@@ -53,14 +90,20 @@ function App(props) {
 
   return (
     <React.Fragment>
+
+      {/* <div> */}
+      <Title nameTitle={"Your Tasks"} />
       <TodoCounter />
       <TodoSearch />
       <TodoList>
         {todos.map(todo => (
-          <TodoItem key={todo.text} text={todo.text} />
+          <TodoItem key={todo.text} text={todo.text} complete={todo.completed} />
         ))}
       </TodoList>
+      <CreateTodoSection />
       <CreateTodoButton />
+
+
     </React.Fragment>
   );
 }

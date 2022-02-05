@@ -1,0 +1,40 @@
+.TodoItem {
+  display: flex;
+  width: calc(85% - 40px);
+  min-height: 60px;
+  background-color: white;
+  margin: 0 auto;
+  border-radius: 15px;
+  color: #323233;
+  position: relative;
+  align-items: center;
+  padding-right: 40px;
+  box-shadow: 7px 7px 10px 0px rgba(0, 0, 0, 0.16);
+}
+.TodoItem--completed {
+  opacity: 0.5;
+}
+.icon {
+  font-size: 1.4rem;
+  transition: color 0.3s;
+  cursor: pointer;
+}
+.TodoItem__delete {
+  position: absolute;
+  top: -10px;
+  right: 20px;
+}
+.TodoItem__delete:hover {
+  color: #c0392b;
+}
+.TodoItem__check {
+  margin-left: 20px;
+  margin-right: 20px;
+  color: #ccc;
+}
+.TodoItem__check--completed {
+  color: #27ae60;
+}
+.TodoItem__text-task--completed {
+  text-decoration: line-through;
+}
