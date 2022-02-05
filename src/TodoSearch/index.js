@@ -1,8 +1,9 @@
 import React from "react";
+import { TodoContext } from "../TodoContext";
 import './TodoSearch.css';
 // react solo te permite retornar un componente o un array
-function TodoSearch({ search, setSearch }) {
-
+function TodoSearch() {
+  const { search, setSearch } = React.useContext(TodoContext)
   const onSearchValueChange = (e) => {
     console.log(e.target.value)
     setSearch(e.target.value)

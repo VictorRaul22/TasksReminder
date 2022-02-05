@@ -8,29 +8,27 @@ import { CreateTodoButton } from '../CreateTodoButton';
 import { Title } from '../Title';
 import { CreateTodoSection } from '../CreateTodoSection';
 function AppUI() {
-
+  //Reach.useCOntext es un hook
+  const { loading, error, searchTodos, completeTodo, deleteTodo } = React.useContext(TodoContext);
   return (
     <React.Fragment>
       <Title nameTitle={"Your Tasks"} />
       <TodoCounter />
       <TodoSearch />
-      <TodoContext.Consumer>
-        {({ loading, error, searchTodos, completeTodo, deleteTodo }) => (
-          <TodoList>
-            {loading && <p>Cargando</p>}
-            {error && <p>error</p>}
-            {(!loading && !searchTodos.length) && <p>Crea tu primer todo</p>}
-            {searchTodos.map(todo => (
-              <TodoItem key={todo.text}
-                text={todo.text}
-                complete={todo.completed}
-                onComplete={() => completeTodo(todo.text)}
-                onDelete={() => deleteTodo(todo.text)}
-              />
-            ))}
-          </TodoList>
-        )}
-      </TodoContext.Consumer>
+
+      <TodoList>
+        {loading && <p>Cargando</p>}
+        {error && <p>error</p>}
+        {(!loading && !searchTodos.length) && <p>Crea tu primer todo</p>}
+        {searchTodos.map(todo => (
+          <TodoItem key={todo.text}
+            text={todo.text}
+            complete={todo.completed}
+            onComplete={() => completeTodo(todo.text)}
+            onDelete={() => deleteTodo(todo.text)}
+          />
+        ))}
+      </TodoList>
       <CreateTodoSection />
       <CreateTodoButton />
 
