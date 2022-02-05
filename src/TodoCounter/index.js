@@ -1,5 +1,5 @@
 import React from 'react';
-import './css/TodoCounter.css'
+import './TodoCounter.css'
 
 // const estilos = {
 //   color: 'red',
@@ -7,9 +7,10 @@ import './css/TodoCounter.css'
 // }
 //Una forma de agregarle estilos es ponerle la etiqueta style y pasarle los estilos en linea
 
-function TodoCounter() {
+function TodoCounter(props) {
+  const { total, completed } = props;
   return (
-    <h2 className='TodoCounter'>You have completed 1 of 4 tasks</h2>
+    <h2 className='TodoCounter'>You have completed {completed} of {total} tasks</h2>
   )
 }
 /* por buenas practicas es usar export y no export default 

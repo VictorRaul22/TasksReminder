@@ -1,6 +1,6 @@
 import React from "react";
-import "./css/CreateTodoSection.css"
-import image from "./assets/image.png"
+import "./CreateTodoSection.css"
+import image from "../assets/image.png"
 function CreateTodoSection() {
   return (
     <section className="CreateTodoSection">

@@ -20,7 +20,7 @@ body {
   width: 100%;
   place-items: center;
   margin-top: 20px;
-  margin-bottom: 25px;
+  margin-bottom: 0px;
   row-gap: 20px;
   grid-template-areas:
     "title"

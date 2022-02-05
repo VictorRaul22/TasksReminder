@@ -1,0 +1,41 @@
+import React from "react";
+import { TodoContext } from "../TodoContext";
+import { TodoCounter } from '../TodoCounter';
+import { TodoSearch } from '../TodoSearch'
+import { TodoList } from '../TodoList'
+import { TodoItem } from '../TodoItem'
+import { CreateTodoButton } from '../CreateTodoButton';
+import { Title } from '../Title';
+import { CreateTodoSection } from '../CreateTodoSection';
+function AppUI() {
+
+  return (
+    <React.Fragment>
+      <Title nameTitle={"Your Tasks"} />
+      <TodoCounter />
+      <TodoSearch />
+      <TodoContext.Consumer>
+        {({ loading, error, searchTodos, completeTodo, deleteTodo }) => (
+          <TodoList>
+            {loading && <p>Cargando</p>}
+            {error && <p>error</p>}
+            {(!loading && !searchTodos.length) && <p>Crea tu primer todo</p>}
+            {searchTodos.map(todo => (
+              <TodoItem key={todo.text}
+                text={todo.text}
+                complete={todo.completed}
+                onComplete={() => completeTodo(todo.text)}
+                onDelete={() => deleteTodo(todo.text)}
+              />
+            ))}
+          </TodoList>
+        )}
+      </TodoContext.Consumer>
+      <CreateTodoSection />
+      <CreateTodoButton />
+
+
+    </React.Fragment>
+  );
+}
+export { AppUI }
