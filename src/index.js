@@ -15,9 +15,15 @@ import App from './App';
   estaremos parando como argumento un varibale children
   */
 
+
+
 ReactDOM.render(
   <App />,
 
   document.getElementById('root')
 );
 
+// ReactDOM.createPortal(
+//   <App/>,
+//   document.getElementById('modal')
+//   )

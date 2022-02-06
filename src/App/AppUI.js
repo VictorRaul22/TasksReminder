@@ -7,6 +7,7 @@ import { TodoItem } from '../TodoItem'
 import { CreateTodoButton } from '../CreateTodoButton';
 import { Title } from '../Title';
 import { CreateTodoSection } from '../CreateTodoSection';
+import { Modal } from '../Modal';
 function AppUI() {
   //Reach.useCOntext es un hook
   const { loading, error, searchTodos, completeTodo, deleteTodo } = React.useContext(TodoContext);
@@ -31,8 +32,9 @@ function AppUI() {
       </TodoList>
       <CreateTodoSection />
       <CreateTodoButton />
-
-
+      <Modal>
+        <p>{searchTodos[0]?.text}</p>
+      </Modal>
     </React.Fragment>
   );
 }
