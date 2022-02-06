@@ -13,8 +13,10 @@
   display: block;
   color: white;
   transition: transform 0.5s;
+  z-index: 778;
 }
-.btn:hover {
+
+.btn.btn-aspa {
   transform: rotate(222deg);
 }
 @media screen and (min-width: 800px) {

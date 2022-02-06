@@ -1,0 +1,15 @@
+.empty-State {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  justify-content: center;
+  height: 100%;
+  row-gap: 30px;
+  color: #ccc;
+}
+.empty-State__icon {
+  font-size: 6rem;
+}
+.empty-State__text {
+  font-size: 2rem;
+}

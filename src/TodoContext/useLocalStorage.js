@@ -16,12 +16,13 @@ function useLocalStora(itemName, initialValue) {
         } else {
           parsedItem = JSON.parse(localStorageItem)
         }
+        //throw new Error("404 not Found")
         setItem(parsedItem)
         setLoading(false)
       } catch (error) {
         setError(error)
       }
-    }, 2000)
+    }, 3000)
   }, [])
   const saveItem = (newTodos) => {
     try {

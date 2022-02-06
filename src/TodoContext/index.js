@@ -7,7 +7,8 @@ const TodoContext = React.createContext()
 
 function TodoProvider(props) {
   const { item: todos, saveItem: saveTodos, loading, error } = useLocalStora('TODOS_V1', []);
-  const [search, setSearch] = React.useState('')
+  const [search, setSearch] = React.useState('');
+  const [openModal, setOpenModal] = React.useState(false)
 
   const completedTodos = todos.filter(todo => todo.completed).length;
   const totalTodos = todos.length;
@@ -32,8 +33,14 @@ function TodoProvider(props) {
     newTodos.splice(todoIndex, 1);
     saveTodos(newTodos);
   }
+  const addTodo = (text) => {
+    const newTodos = [...todos];
+    newTodos.push({ text, completed: false })
+    saveTodos(newTodos);
+  }
   //React.useEffect este hook ejecutara cuando react tenga todo preparado
-  console.log("primero")
+  // console.log("primero")
+
 
   return (
     <TodoContext.Provider value={{
@@ -46,6 +53,9 @@ function TodoProvider(props) {
       searchTodos,
       completeTodo,
       deleteTodo,
+      openModal,
+      setOpenModal,
+      addTodo
     }}>
       {props.children}
     </TodoContext.Provider>

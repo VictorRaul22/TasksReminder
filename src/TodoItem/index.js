@@ -14,7 +14,7 @@ function TodoItem(props) {
         onClick={props.onComplete}
       ></i>
       <p className={`TodoItem__text-task ${props.complete && 'TodoItem__text-task--completed'}`}>{props.text}</p>
-      <i className="fas fa-trash-alt icon TodoItem__delete"
+      <i className="fas fa-times icon TodoItem__delete"
         onClick={props.onDelete}
       ></i>
     </li>

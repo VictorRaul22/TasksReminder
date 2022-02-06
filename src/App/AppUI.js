@@ -8,9 +8,13 @@ import { CreateTodoButton } from '../CreateTodoButton';
 import { Title } from '../Title';
 import { CreateTodoSection } from '../CreateTodoSection';
 import { Modal } from '../Modal';
+import { TodosError } from '../TodoError';
+import { TodosLoading } from '../TodosLoading';
+import { EmptyTodos } from '../EmptyTodos';
 function AppUI() {
   //Reach.useCOntext es un hook
-  const { loading, error, searchTodos, completeTodo, deleteTodo } = React.useContext(TodoContext);
+  console.log("renderizado")
+  const { loading, error, searchTodos, completeTodo, deleteTodo, openModal, setOpenModal } = React.useContext(TodoContext);
   return (
     <React.Fragment>
       <Title nameTitle={"Your Tasks"} />
@@ -18,9 +22,9 @@ function AppUI() {
       <TodoSearch />
 
       <TodoList>
-        {loading && <p>Cargando</p>}
-        {error && <p>error</p>}
-        {(!loading && !searchTodos.length) && <p>Crea tu primer todo</p>}
+        {loading && <TodosLoading />}
+        {error && <TodosError error={error} />}
+        {(!loading && !error && !searchTodos.length) && <EmptyTodos />}
         {searchTodos.map(todo => (
           <TodoItem key={todo.text}
             text={todo.text}
@@ -30,11 +34,20 @@ function AppUI() {
           />
         ))}
       </TodoList>
-      <CreateTodoSection />
-      <CreateTodoButton />
-      <Modal>
-        <p>{searchTodos[0]?.text}</p>
-      </Modal>
+      {
+        !openModal && <CreateTodoSection />
+      }
+
+      <CreateTodoButton
+        openModal={openModal}
+        setOpenModal={setOpenModal}
+      />
+      {
+        openModal &&
+        <Modal>
+          <CreateTodoSection />
+        </Modal>
+      }
     </React.Fragment>
   );
 }

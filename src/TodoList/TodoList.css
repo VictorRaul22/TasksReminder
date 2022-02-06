@@ -7,17 +7,49 @@
   align-items: center;
   justify-content: flex-start;
   height: 100%;
+  /* overflow: hidden; */
 }
+
 .TodoList__tasks {
   padding-top: 25px;
   padding-bottom: 25px;
-  width: 85%;
+  padding-left: 8px;
+  width: 100%;
   list-style: none;
   display: flex;
   flex-direction: column;
-  background-color: rgba(89, 89, 129, 0.8);
-
-  border-radius: 20px;
-  box-shadow: 5px 5px 22px 0px rgba(0, 0, 0, 0.65);
+  height: 100%;
   row-gap: 25px;
+  overflow-y: scroll;
+}
+.container-scroll {
+  position: relative;
+  box-sizing: border-box;
+  width: 85%;
+  background-color: rgba(89, 89, 129, 0.8);
+  border-radius: 20px;
+  height: 100%;
+  padding-bottom: 62px;
+  padding-top: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
+  overflow: hidden;
+}
+
+.TodoList__tasks::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.TodoList__tasks::-webkit-scrollbar:vertical {
+  width: 6px;
+}
+
+.TodoList__tasks::-webkit-scrollbar-thumb {
+  background-color: #797979;
+  border-radius: 20px;
+  /* border: 2px solid #f1f2f3; */
+}
+
+.TodoList__tasks::-webkit-scrollbar-track {
+  border-radius: 10px;
 }

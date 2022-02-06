@@ -3,9 +3,11 @@ import './TodoList.css';
 function TodoList(props) {
   return (
     <section className='TodoList'>
-      <ul className='TodoList__tasks'>
-        {props.children}
-      </ul>
+      <div className='container-scroll'>
+        <ul className='TodoList__tasks'>
+          {props.children}
+        </ul>
+      </div>
     </section>
   )
 }

@@ -1,6 +1,6 @@
 .TodoItem {
   display: flex;
-  width: calc(85% - 40px);
+  width: calc(97% - 40px);
   min-height: 60px;
   background-color: white;
   margin: 0 auto;
@@ -15,14 +15,17 @@
   opacity: 0.5;
 }
 .icon {
+  box-sizing: border-box;
   font-size: 1.4rem;
   transition: color 0.3s;
   cursor: pointer;
+  padding: 5px;
 }
 .TodoItem__delete {
   position: absolute;
-  top: -10px;
+  top: -19px;
   right: 20px;
+  font-size: 30px;
 }
 .TodoItem__delete:hover {
   color: #c0392b;
