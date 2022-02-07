@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/TasksReminde/static/css/main.7354b562.css",
+    "main.js": "/TasksReminde/static/js/main.659b078b.js",
+    "static/media/image.png": "/TasksReminde/static/media/image.dab1163d2a5f90bd6c65.png",
+    "index.html": "/TasksReminde/index.html",
+    "main.7354b562.css.map": "/TasksReminde/static/css/main.7354b562.css.map",
+    "main.659b078b.js.map": "/TasksReminde/static/js/main.659b078b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7354b562.css",
+    "static/js/main.659b078b.js"
+  ]
+}
