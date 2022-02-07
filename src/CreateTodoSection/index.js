@@ -13,18 +13,22 @@ function CreateTodoSection() {
   }
   return (
     <section className={`CreateTodoSection ${openModal && "visibility"}`}>
-      <h3 className="CreateTodoSection__title">Crear new Task</h3>
-      <form onSubmit={onAdd}>
-        <label className="CreateTodoSection__label">Task Name</label>
-        <div className="CreateTodoSection__create">
-          <textarea name="textArea" className="CreateTodoSection__input" placeholder="Write the task name" />
-          <button
-            type="submit"
-            className="CreateTodoSection__btn"
-          >Create task</button>
-        </div>
-      </form>
-      <img src={image} alt="iamgenes de tareas" className="CreateTodoSection__img" />
+      <div className="CreateTodoSection-top">
+        <h3 className="CreateTodoSection__title">Crear new Task</h3>
+        <form onSubmit={onAdd}>
+          <label className="CreateTodoSection__label">Task Name</label>
+          <div className="CreateTodoSection__create">
+            <textarea name="textArea" className="CreateTodoSection__input" placeholder="Write the task name" />
+            <button
+              type="submit"
+              className="CreateTodoSection__btn"
+            >Create task</button>
+          </div>
+        </form>
+      </div>
+      <div className="CreateTodoSection__containImg">
+        <img src={image} alt="iamgenes de tareas" className="CreateTodoSection__img" />
+      </div>
     </section>
   )
 }

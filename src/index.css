@@ -31,10 +31,16 @@ body {
 }
 @media screen and (min-width: 800px) {
   #root {
+    margin-top: 0;
     grid-template-columns: 50% 50%;
     grid-template-rows: 13% 10% 10% 67%;
     grid-template-areas: "title  title" "create counter" "create search" "create lista";
     row-gap: 0px;
-    height: 95vh;
+    min-height: 95vh;
+  }
+}
+@media screen and (max-height: 696px) {
+  #root {
+    padding-bottom: 20px;
   }
 }

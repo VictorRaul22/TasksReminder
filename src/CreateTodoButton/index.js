@@ -1,5 +1,7 @@
 import React from "react";
 import './CreateTodoButton.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
 /*
   Formas de agregar eventos
   -envolverlo en una funcion en un eneto onclick
@@ -20,7 +22,10 @@ function CreateTodoButton(props) {
       className={`btn ${props.openModal && "btn-aspa"}`}
       // onClick={() => console.log('click')}
       onClick={onClickButton}
-    >+</button>
+    >
+
+      <FontAwesomeIcon icon={faTimes} />
+    </button>
   )
 }
 export { CreateTodoButton }
