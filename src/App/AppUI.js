@@ -52,3 +52,10 @@ function AppUI() {
   );
 }
 export { AppUI }
+
+/*
+name                                width   tipe  cost
+@fortawesome/free-solid-svg-icons	  Solid	  fas		Free
+@fortawesome/free-regular-svg-icons	Regular	far		Free
+@fortawesome/free-brands-svg-icons	Brands	fab		Free
+*/

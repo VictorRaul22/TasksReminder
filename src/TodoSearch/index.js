@@ -1,6 +1,8 @@
 import React from "react";
 import { TodoContext } from "../TodoContext";
 import './TodoSearch.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 // react solo te permite retornar un componente o un array
 function TodoSearch() {
   const { search, setSearch } = React.useContext(TodoContext)
@@ -16,7 +18,10 @@ function TodoSearch() {
         onChange={onSearchValueChange}
         value={search}
       />
-      <i className="fas fa-search TodoSearch__icon"></i>
+      {/* <i className="fas fa-search TodoSearch__icon"></i> */}
+      <div className="TodoSearch__icon">
+        <FontAwesomeIcon icon={faSearch} />
+      </div>
     </div >
   )
 }
