@@ -16,7 +16,7 @@
   color: white;
   transition: transform 0.5s;
   z-index: 778;
-  transform: rotate(222deg);
+  transform: rotate(225deg);
   overflow: hidden;
 }
 .btn svg {
