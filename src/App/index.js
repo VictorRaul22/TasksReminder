@@ -1,46 +1,83 @@
 import React from 'react';
-import { TodoProvider } from '../TodoContext';
-import { AppUI } from './AppUI'
-/*
-  ClassName= class
-  {algo } sirver para tener valores varibales de una propiedad y no algo constante
--------------------------------------------
-  Por combecion a los parametros de los componentes se le llama propiedades(props),
-  como en el index.js le pase como propiedad saludar puedo agarralo en el app como un parametro
-
-  todos los parametros estaran en el objeto props ,siq ueremos uno en especifico podemos hacer la 
-  destructuracion let {saludo,saludo2,...}=props
-*/
-
-/*
-  para tener logica dentro de un componente del return hay dos formas
-  {todos.map(todo=>{
-    return(...)
-  })}
-  o hay otra mas usuada
-  {todos.map(todo=>(
-    ...
-  ))}
-  ---------------
-  cada componente de react solo soporta que le envia un solo componente, para solucionar esto
-  puedes crear un div que englobe todo el componenete pero al momento de trabajar con css eso 
-  se puede complicar.
-  Otra opcion es pedirle a reac que nos renderice un etiquete invisible <React.fragment></React.fragment>
-  ---------------
-  Cuando tenermos que iterar un componenete ,tenemos que pasarle un identificador unico con key={}
-*/
-
-//Se puede compartir el estado con barios componeentes,pero ten cuidado puede explotar :v
-
-
-
-
+import { useTodos } from './useTodos';
+import { TodoList } from '../TodoList'
+import { TodoItem } from '../TodoItem'
+import { CreateTodoButton } from '../CreateTodoButton';
+import { Title } from '../Title';
+import { CreateTodoSection } from '../CreateTodoSection';
+import { Modal } from '../Modal';
+import { TodosError } from '../TodoError';
+import { TodosLoading } from '../TodosLoading';
+import { EmptyTodos } from '../EmptyTodos';
+import { TodoHeader } from '../TodoHeader'
+import { TodoCounter } from '../TodoCounter';
+import { TodoSearch } from '../TodoSearch'
 
 function App(props) {
+  const {
+    loading,
+    error,
+    searchTodos,
+    completeTodo,
+    deleteTodo,
+    openModal,
+    setOpenModal,
+    search,
+    setSearch,
+    completedTodos,
+    totalTodos,
+    addTodo
+  } = useTodos();
   return (
-    <TodoProvider>
-      <AppUI />
-    </TodoProvider>
+    <React.Fragment>
+      <Title nameTitle={"Your Tasks"} />
+      <TodoHeader>
+        <TodoCounter
+          totalTodos={totalTodos}
+          completedTodos={completedTodos}
+        />
+        <TodoSearch
+          search={search}
+          setSearch={setSearch}
+        />
+      </TodoHeader>
+      <TodoList>
+        {loading && <TodosLoading />}
+        {error && <TodosError error={error} />}
+        {(!loading && !error && !searchTodos.length) && <EmptyTodos />}
+        {searchTodos.map(todo => (
+          <TodoItem key={todo.text}
+            text={todo.text}
+            complete={todo.completed}
+            onComplete={() => completeTodo(todo.text)}
+            onDelete={() => deleteTodo(todo.text)}
+          />
+        ))}
+      </TodoList>
+      {
+        !openModal &&
+        <CreateTodoSection
+          openModal={openModal}
+          setOpenModal={setOpenModal}
+          addTodo={addTodo}
+        />
+      }
+
+      <CreateTodoButton
+        openModal={openModal}
+        setOpenModal={setOpenModal}
+      />
+      {
+        openModal &&
+        <Modal>
+          <CreateTodoSection
+            openModal={openModal}
+            setOpenModal={setOpenModal}
+            addTodo={addTodo}
+          />
+        </Modal>
+      }
+    </React.Fragment>
   )
 
 }

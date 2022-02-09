@@ -5,7 +5,7 @@ import { useLocalStora } from './useLocalStorage'
 //nos permite compartir el esatdo por toda nuestra app
 const TodoContext = React.createContext()
 
-function TodoProvider(props) {
+function useTodos() {
   const { item: todos, saveItem: saveTodos, loading, error } = useLocalStora('TODOS_V1', []);
   const [search, setSearch] = React.useState('');
   const [openModal, setOpenModal] = React.useState(false)
@@ -42,24 +42,20 @@ function TodoProvider(props) {
   // console.log("primero")
 
 
-  return (
-    <TodoContext.Provider value={{
-      error,
-      loading,
-      totalTodos,
-      completedTodos,
-      search,
-      setSearch,
-      searchTodos,
-      completeTodo,
-      deleteTodo,
-      openModal,
-      setOpenModal,
-      addTodo
-    }}>
-      {props.children}
-    </TodoContext.Provider>
-  )
+  return {
+    error,
+    loading,
+    totalTodos,
+    completedTodos,
+    search,
+    setSearch,
+    searchTodos,
+    completeTodo,
+    deleteTodo,
+    openModal,
+    setOpenModal,
+    addTodo
+  }
 }
 
-export { TodoContext, TodoProvider }
+export { useTodos }

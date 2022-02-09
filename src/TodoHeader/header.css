@@ -1,0 +1,8 @@
+.header {
+  grid-area: header;
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  width: 100%;
+  row-gap: 8px;
+}

@@ -1,10 +1,9 @@
 import React from "react";
 import "./CreateTodoSection.css"
 import image from "../assets/image.png"
-import { TodoContext } from "../TodoContext";
 
-function CreateTodoSection() {
-  let { openModal, setOpenModal, addTodo } = React.useContext(TodoContext)
+function CreateTodoSection({ openModal, setOpenModal, addTodo }) {
+  // let { openModal, setOpenModal, addTodo } = React.useContext(TodoContext)
   const onAdd = (e) => {
     e.preventDefault();
     addTodo(e.target['textArea'].value);
