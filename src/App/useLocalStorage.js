@@ -1,5 +1,6 @@
 import React from "react";
 function useLocalStora(itemName, initialValue) {
+  const [sincronizedItem, setsincronizedItem] = React.useState(true);
   const [error, setError] = React.useState(false)
   const [loading, setLoading] = React.useState(true);
   const [item, setItem] = React.useState(initialValue);
@@ -19,11 +20,12 @@ function useLocalStora(itemName, initialValue) {
         //throw new Error("404 not Found")
         setItem(parsedItem)
         setLoading(false)
+        setsincronizedItem(true)
       } catch (error) {
         setError(error)
       }
     }, 3000)
-  }, [])
+  }, [sincronizedItem])
   const saveItem = (newTodos) => {
     try {
       const stringifiedTodos = JSON.stringify(newTodos);
@@ -33,8 +35,11 @@ function useLocalStora(itemName, initialValue) {
       setError(error)
     }
   }
-
+  const sincronizeItem = () => {
+    setLoading(true);
+    setsincronizedItem(false)
+  }
   // por convencion de react si hay mas de 2 valores en el custom hook se tieen que enviar un objeto
-  return { item, saveItem, loading, error };
+  return { item, saveItem, loading, error, sincronizeItem };
 }
 export { useLocalStora }

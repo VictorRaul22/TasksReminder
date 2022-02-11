@@ -13,13 +13,12 @@ import App from './App';
   --------------
   Si enves de psar un propiedad asemos una etiqueta de cierre y ponemos un valor entre la etiqueta,
   estaremos parando como argumento un varibale children
-  */
+*/
 
 
 
 ReactDOM.render(
-  <App />,
-
+  <App saludo="buenas" name="Victor" />,
   document.getElementById('root')
 );
 

@@ -10,6 +10,18 @@ function CreateTodoSection({ openModal, setOpenModal, addTodo }) {
     e.target['textArea'].value = "";
     setOpenModal(false);
   }
+  React.useEffect(() => {
+    function onResize() {
+      if (document.documentElement.clientWidth >= 800) {
+        setOpenModal(false)
+      }
+    }
+    window.addEventListener("resize", onResize);
+    return () => {
+      window.removeEventListener("resize", onResize);
+    }
+  }, [])
+
   return (
     <section className={`CreateTodoSection ${openModal && "visibility"}`}>
       <div className="CreateTodoSection-top">

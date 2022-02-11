@@ -3,10 +3,16 @@ import { useLocalStora } from './useLocalStorage'
 //Herramienta de react que nos premite crear contexto que 
 //son las herremientas que nos dan provider y consumers, estos 
 //nos permite compartir el esatdo por toda nuestra app
-const TodoContext = React.createContext()
+// const TodoContext = React.createContext()
 
 function useTodos() {
-  const { item: todos, saveItem: saveTodos, loading, error } = useLocalStora('TODOS_V1', []);
+  const {
+    item: todos,
+    saveItem: saveTodos,
+    loading,
+    error,
+    sincronizeItem: sincronizeTodos
+  } = useLocalStora('TODOS_V1', []);
   const [search, setSearch] = React.useState('');
   const [openModal, setOpenModal] = React.useState(false)
 
@@ -40,8 +46,6 @@ function useTodos() {
   }
   //React.useEffect este hook ejecutara cuando react tenga todo preparado
   // console.log("primero")
-
-
   return {
     error,
     loading,
@@ -54,7 +58,8 @@ function useTodos() {
     deleteTodo,
     openModal,
     setOpenModal,
-    addTodo
+    addTodo,
+    sincronizeTodos
   }
 }
 

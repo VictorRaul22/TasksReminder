@@ -23,3 +23,6 @@
   right: 13px;
   line-height: 45px;
 }
+.TodoSearch:disabled {
+  opacity: 25%;
+}

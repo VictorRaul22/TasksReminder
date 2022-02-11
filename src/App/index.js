@@ -12,6 +12,7 @@ import { EmptyTodos } from '../EmptyTodos';
 import { TodoHeader } from '../TodoHeader'
 import { TodoCounter } from '../TodoCounter';
 import { TodoSearch } from '../TodoSearch'
+import { ChangeAlert } from '../ChangeAlert';
 
 function App(props) {
   const {
@@ -26,12 +27,13 @@ function App(props) {
     setSearch,
     completedTodos,
     totalTodos,
-    addTodo
+    addTodo,
+    sincronizeTodos
   } = useTodos();
   return (
     <React.Fragment>
       <Title nameTitle={"Your Tasks"} />
-      <TodoHeader>
+      <TodoHeader loading={loading}>
         <TodoCounter
           totalTodos={totalTodos}
           completedTodos={completedTodos}
@@ -41,18 +43,33 @@ function App(props) {
           setSearch={setSearch}
         />
       </TodoHeader>
-      <TodoList>
-        {loading && <TodosLoading />}
-        {error && <TodosError error={error} />}
-        {(!loading && !error && !searchTodos.length) && <EmptyTodos />}
-        {searchTodos.map(todo => (
+      <TodoList
+        error={error}
+        loading={loading}
+        searchTodos={searchTodos}
+        totalTodos={totalTodos}
+        searchText={search}
+        onError={() => <TodosError />}
+        onLoading={() => <TodosLoading />}
+        onEmptyTodos={() => <EmptyTodos text={"You haven't pending tasks"} />}
+        onEmptySearchResults={(searchText) => <EmptyTodos text={`You don't have task with the name ${searchText}`} />}
+        render={(todo) => (
           <TodoItem key={todo.text}
             text={todo.text}
             complete={todo.completed}
             onComplete={() => completeTodo(todo.text)}
             onDelete={() => deleteTodo(todo.text)}
           />
-        ))}
+        )}
+      >
+        {(todo) => (
+          <TodoItem key={todo.text}
+            text={todo.text}
+            complete={todo.completed}
+            onComplete={() => completeTodo(todo.text)}
+            onDelete={() => deleteTodo(todo.text)}
+          />
+        )}
       </TodoList>
       {
         !openModal &&
@@ -60,8 +77,11 @@ function App(props) {
           openModal={openModal}
           setOpenModal={setOpenModal}
           addTodo={addTodo}
+
         />
       }
+
+
 
       <CreateTodoButton
         openModal={openModal}
@@ -74,9 +94,13 @@ function App(props) {
             openModal={openModal}
             setOpenModal={setOpenModal}
             addTodo={addTodo}
+
           />
         </Modal>
       }
+      <ChangeAlert
+        sincronize={sincronizeTodos}
+      />
     </React.Fragment>
   )
 
