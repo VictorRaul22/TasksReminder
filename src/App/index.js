@@ -14,22 +14,25 @@ import { TodoCounter } from '../TodoCounter';
 import { TodoSearch } from '../TodoSearch'
 import { ChangeAlert } from '../ChangeAlert';
 
-function App(props) {
+function App() {
+  const { state, stateUpdate } = useTodos();
   const {
-    loading,
     error,
+    loading,
     searchTodos,
+    totalTodos,
+    completedTodos,
+    openModal,
+    search,
+  } = state;
+  const {
     completeTodo,
     deleteTodo,
-    openModal,
     setOpenModal,
-    search,
     setSearch,
-    completedTodos,
-    totalTodos,
     addTodo,
     sincronizeTodos
-  } = useTodos();
+  } = stateUpdate
   return (
     <React.Fragment>
       <Title nameTitle={"Your Tasks"} />

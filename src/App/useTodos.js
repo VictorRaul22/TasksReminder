@@ -46,20 +46,26 @@ function useTodos() {
   }
   //React.useEffect este hook ejecutara cuando react tenga todo preparado
   // console.log("primero")
-  return {
+  const state = {
     error,
     loading,
     totalTodos,
     completedTodos,
     search,
-    setSearch,
     searchTodos,
+    openModal,
+  }
+  const stateUpdate = {
+
+    setSearch,
     completeTodo,
     deleteTodo,
-    openModal,
     setOpenModal,
     addTodo,
     sincronizeTodos
+  }
+  return {
+    state, stateUpdate
   }
 }
 
